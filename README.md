@@ -51,7 +51,7 @@ Admin
 | `index.html` | Galeri publik |
 | `daftar.html` | Halaman pendaftaran, menampilkan kode akses dan tombol simpan ke WhatsApp |
 | `upload.html` | Halaman upload karya (memakai kode akses) |
-| `admin.html` | Halaman admin (perlu kata sandi) |
+| `admin.html` | Halaman admin (Kata sandi: adminmudaba) |
 | `config.js` | Konfigurasi bersama: URL API, nama sekolah, logo, dan fungsi `api()` |
 | `style.css` | Gaya bersama semua halaman |
 | `Code.gs` | Backend Google Apps Script (tempel di Apps Script, bukan di hosting) |
