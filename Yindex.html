@@ -3,12 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portofolio Digital Pendidik dan Peserta Didik</title>
-<meta name="description" content="Ruang apresiasi bagi guru dan peserta didik untuk mendokumentasikan, memamerkan, dan mengembangkan karya digital.">
+<title>Portofolio Digital SMK MUHAMMADIYAH 2 BANTUL</title>
+<meta name="description" content="Ruang apresiasi presentasi bagi guru dan peserta didik untuk mendokumentasikan, memamerkan, dan mengembangkan karya digital.">
 <meta property="og:title" content="Portofolio Digital Pendidik dan Peserta Didik">
 <meta property="og:description" content="Jelajahi karya, inspirasi, dan prestasi digital.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<!-- FAVICON -->
+<link rel="icon" type="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png" sizes="32x32" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+<link rel="icon" type="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png" sizes="16x16" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script src="https://unpkg.com/lucide@0.441.0/dist/umd/lucide.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -50,9 +54,9 @@ dialog{max-width:min(720px,94vw);width:100%;border-radius:20px;border:1px solid 
 </header>
 <main>
 <section id="beranda" class="hero"><div class="max-w-6xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
-<div><span class="pill"><i data-lucide="sparkles" class="w-4 h-4"></i>Portofolio digital sekolah</span>
+<div><span class="pill"><i data-lucide="" class="w-4 h-4"></i>Portofolio Karya Digital Sekolah</span>
 <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mt-5">Jelajahi karya, inspirasi, dan prestasi digital</h1>
-<p class="mt-5 text-lg max-w-prose" style="color:var(--mut)">Ruang apresiasi bagi guru dan peserta didik untuk mendokumentasikan, memamerkan, dan mengembangkan karya digital.</p>
+<p class="mt-5 text-lg max-w-prose" style="color:var(--mut)">Ruang apresiasi presentasi bagi guru dan peserta didik untuk mendokumentasikan, memamerkan, dan mengembangkan karya digital.</p>
 <div class="mt-7 flex flex-wrap gap-3"><a href="#galeri" class="btn">Jelajahi karya</a><a href="#guru" class="btn o">Lihat profil</a><button class="btn o" data-open="reg">Daftarkan karya</button></div></div>
 <div class="relative hidden md:block" aria-hidden="true"><div class="card p-8 grid grid-cols-2 gap-4" style="border-radius:32px">
 <div class="ico w-full h-28" style="height:7rem"><i data-lucide="gamepad-2" class="w-10 h-10"></i></div><div class="ico w-full" style="height:7rem;width:100%"><i data-lucide="video" class="w-10 h-10"></i></div>
@@ -76,8 +80,8 @@ dialog{max-width:min(720px,94vw);width:100%;border-radius:20px;border:1px solid 
 <div id="grid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
 <div id="state" class="mt-6"></div><div class="text-center mt-8"><button id="more" class="btn o hidden">Muat lebih banyak</button></div></section>
 
-<section id="guru" class="sec"><span class="pill">Pendidik</span><h2 class="mt-3">Profil guru</h2><div id="listGuru" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></div></section>
-<section id="siswa" class="sec"><span class="pill">Peserta didik</span><h2 class="mt-3">Profil siswa</h2><div id="listSiswa" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></div></section>
+<section id="guru" class="sec"><span class="pill">Pendidik</span><h2 class="mt-3">Profil guru</h2><div id="listGuru" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></div><div class="text-center mt-6"><button id="moreGuru" class="btn o hidden">Muat lebih banyak</button></div></section>
+<section id="siswa" class="sec"><span class="pill">Peserta didik</span><h2 class="mt-3">Profil siswa</h2><div id="listSiswa" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></div><div class="text-center mt-6"><button id="moreSiswa" class="btn o hidden">Muat lebih banyak</button></div></section>
 
 <section id="penghargaan" class="sec"><div class="text-center max-w-2xl mx-auto"><span class="pill">Penghargaan</span><h2 class="mt-3">Tingkat prestasi</h2>
 <p class="mt-3" style="color:var(--mut)">Tingkat dihitung otomatis dari total bintang. Lencana "Tersertifikasi" hanya untuk karya yang divalidasi administrator.</p></div>
@@ -103,18 +107,18 @@ dialog{max-width:min(720px,94vw);width:100%;border-radius:20px;border:1px solid 
 <div class="flex md:justify-end"><button class="btn" style="background:#fff;color:var(--c)" data-open="reg">Daftar sekarang</button></div></div></section>
 </main>
 <footer style="background:var(--card);border-top:1px solid var(--line)"><div class="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-4 text-sm">
-<div class="md:col-span-2"><b class="text-lg" id="foot"></b><p class="mt-2 max-w-sm" style="color:var(--mut)">Platform portofolio digital untuk guru dan peserta didik.</p></div>
+<div class="md:col-span-2"><b class="text-lg" id="foot"></b><p class="mt-2 max-w-sm" style="color:var(--mut)">Platform portofolio digital untuk guru dan peserta didik by MOIDEA.</p></div>
 <div><b>Navigasi</b><ul class="mt-3 space-y-2" style="color:var(--mut)"><li><a href="#galeri">Karya</a></li><li><a href="#guru">Guru</a></li><li><a href="#siswa">Siswa</a></li><li><a href="#penghargaan">Penghargaan</a></li></ul></div>
-<div><b>Informasi</b><ul class="mt-3 space-y-2" style="color:var(--mut)"><li><a href="#cara">Cara daftar</a></li><li><a href="#tentang">Tentang</a></li></ul><p class="mt-4 pill"><i data-lucide="lock" class="w-4 h-4"></i>Data privat terlindungi</p></div></div></footer>
+<div><b>Informasi</b><ul class="mt-3 space-y-2" style="color:var(--mut)"><li><a href="#cara">Cara daftar</a></li><li><a href="https://www.canva.com/design/DAHXMByBqNM/RvYVsgJEBJzgREN0QbXgAQ/view?utm_content=DAHXMByBqNM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc62e1285d2#1">Tentang</a></li></ul><p class="mt-4 pill"><i data-lucide="lock" class="w-4 h-4"></i>Data privat terlindungi</p></div></div></footer>
 <dialog id="dlg"><div class="p-5"><button class="btn o float-right" id="dx" aria-label="Tutup"><i data-lucide="x" class="w-4 h-4"></i></button><div id="dbody"></div></div></dialog>
 <script>
 const APP_CONFIG = {
-  GAS_URL: 'GANTI_DENGAN_URL_WEB_APP_GAS',   // contoh: https://script.google.com/macros/s/XXXX/exec
-  siteName: 'Portofolio Digital Pendidik dan Peserta Didik',
-  school: 'Nama Sekolah Anda', logo: '🎓',   // emoji atau URL gambar https
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbxzcyoZz-Di-MRE8VFVma2bFl2MEV0IcfNADDjLYZaIjXTt_rGhWyWuLaA4USheyCQ/exec',   // contoh: https://script.google.com/macros/s/XXXX/exec
+  siteName: 'SMK MUHAMMADIYAH 2 BANTUL',
+  school: 'SMK MUHAMMADIYAH 2 BANTUL', logo: 'https://raw.githubusercontent.com/hendratmoko/SMKM2BTL/refs/heads/main/LOGO.png',   // emoji atau URL gambar https
   colorPrimary: '#1d6fe8', colorAccent: '#06b6d4',
   adminContact: 'admin@sekolah.sch.id',
-  enableRegistration: true, pageSize: 9,
+  enableRegistration: true, pageSize: 60, pageSizeProfiles: 8,
   tiers: [{n:'Bronze',min:1,c:'#b4713b'},{n:'Silver',min:10,c:'#8a96a3'},{n:'Gold',min:25,c:'#d99a00'},{n:'Diamond',min:50,c:'#2aa7d6'}]
 };
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -174,8 +178,14 @@ function init() {
   fill('#fCat','Semua kategori',uniq(W.map(w=>w.category))); fill('#fSt','Guru & siswa',uniq(W.map(w=>w.status)));
   fill('#fDep','Semua jurusan',uniq(W.map(w=>w.department))); fill('#fCls','Semua kelas',uniq(W.map(w=>w.cls))); fill('#fYr','Semua tahun',uniq(W.map(w=>w.year)).reverse());
   const pc = p => `<button class="card p-4 text-left hover:shadow-lg transition" data-p="${esc(p.id)}"><div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white" style="background:var(--c)">${okUrl(p.avatar) ? `<img src="${esc(p.avatar)}" alt="" class="w-11 h-11 rounded-full object-cover" loading="lazy">` : esc(p.name.slice(0,1).toUpperCase())}</span><span><b>${esc(p.name)}</b><br><span class="text-xs" style="color:var(--mut)">${esc(p.department || p.mapel || p.status)}</span></span></div><p class="text-sm mt-3">${p.works.length} karya, ${p.stars} bintang</p></button>`;
-  const lst = (s, id) => { const a = P.filter(p => p.status === s); $(id).innerHTML = a.length ? a.map(pc).join('') : `<p style="color:var(--mut)">Belum ada profil ${s.toLowerCase()} yang dipublikasikan.</p>`; };
-  lst('Guru','#listGuru'); lst('Siswa','#listSiswa');
+  const lst = (s, id, bid) => {
+    const a = P.filter(p => p.status === s), n = APP_CONFIG.pageSizeProfiles, el = $(id), btn = $(bid); let c = 0;
+    if (!a.length) { el.innerHTML = `<p style="color:var(--mut)">Belum ada profil ${s.toLowerCase()} yang dipublikasikan.</p>`; btn.classList.add('hidden'); return; }
+    el.innerHTML = '';
+    const step = () => { el.insertAdjacentHTML('beforeend', a.slice(c, c + n).map(pc).join('')); c = Math.min(c + n, a.length); btn.classList.toggle('hidden', c >= a.length); lucide.createIcons(); };
+    btn.onclick = step; step();
+  };
+  lst('Guru', '#listGuru', '#moreGuru'); lst('Siswa', '#listSiswa', '#moreSiswa');
   const top = [...P].sort((a,b)=>b.stars-a.stars).filter(p=>tier(p.stars));
   $('#awards').innerHTML = (top.length ? top : []).slice(0,6).map(p => { const t = tier(p.stars); return `<div class="card p-4 flex items-center gap-4"><i data-lucide="${t.n==='Diamond'?'gem':'trophy'}" class="w-9 h-9" style="color:${t.c}"></i><div class="flex-1"><b>${esc(p.name)}</b><div class="text-sm" style="color:var(--mut)">Tingkat ${t.n} dengan ${p.stars} bintang${p.works.some(w=>w.certified)?', ada karya tersertifikasi':''}</div></div></div>`; }).join('') || '<p style="color:var(--mut)">Belum ada penghargaan.</p>';
   const deps = uniq(W.map(w => w.department)).concat(uniq(W.map(w => w.category)));
