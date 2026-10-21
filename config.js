@@ -1,6 +1,6 @@
 // Konfigurasi bersama untuk semua halaman
 const SITE = {
-  GAS_URL: 'https://script.google.com/macros/s/AKfycbzcoe27720MIUKOLr7V-xajxJiRCowK_7CKV7ynMGSRlevNMyVgxwX0ITDvulZwKCoBzg/exec',
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbzYfmlZSUtjgnDQOupaTQDVhsk0-HvXL82B1PnK8HJQtqWG04Y4MyTLyP5eaQ5bexw6vw/exec',
   name: 'SMK MUHAMMADIYAH 2 BANTUL',
   logo: 'https://raw.githubusercontent.com/hendratmoko/SMKM2BTL/refs/heads/main/LOGO.png'
 };
