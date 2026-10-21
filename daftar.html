@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pendaftaran | Portofolio Digital SMK MUHAMMADIYAH 2 BANTUL</title>
+<link rel="icon" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="background:var(--card);border-bottom:1px solid var(--line)"><div class="max-w-xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
+<a href="index.html" class="flex items-center gap-2 font-extrabold"><img id="logo" class="w-7 h-7" alt=""><span id="sn" class="text-sm"></span></a>
+<nav class="flex gap-4 text-sm font-semibold"><a href="index.html">Beranda</a><a href="daftar.html">Daftar</a><a href="upload.html">Upload karya</a></nav></div></header>
+<main class="max-w-xl mx-auto px-4 py-8">
+<span class="pill">Langkah 1</span><h1 class="text-3xl font-extrabold mt-3">Pendaftaran</h1>
+<p class="mt-2" style="color:var(--mut)">Kode akses dibuat otomatis setelah Anda mendaftar. Kode itulah yang dipakai untuk upload karya.</p>
+<form id="fReg" class="card p-5 mt-6 grid gap-4">
+<label class="block text-sm font-semibold">Nama lengkap<input class="in mt-1 font-normal" name="name" type="text" required minlength=3 maxlength=80 autocomplete=name></label>
+<label class="block text-sm font-semibold">Status<select name="status" class="in mt-1 font-normal"><option>Siswa</option><option>Guru</option></select></label>
+<label class="block text-sm font-semibold">Jurusan atau program keahlian<input class="in mt-1 font-normal" name="department" type="text" maxlength=80></label>
+<label class="block text-sm font-semibold">Nomor WhatsApp<input class="in mt-1 font-normal" name="wa" type="tel" inputmode="tel" placeholder="08123456789" required autocomplete="tel"><span class="block text-xs font-normal mt-1" style="color:var(--mut)">Tidak ditampilkan di publik. Dipakai untuk menyimpan hasil pendaftaran ke WhatsApp Anda.</span></label>
+<label class="text-sm flex gap-2"><input type="checkbox" name="publish_consent" required> Saya mengizinkan karya dan nama saya dipublikasikan.</label>
+<button class="btn" id="bReg">Daftar</button><p id="msg" class="text-sm" role="status"></p></form>
+<section id="done" class="card p-6 mt-6 hidden text-center" aria-live="polite"></section>
+</main>
+<script src="config.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+$('#logo').src = SITE.logo; $('#sn').textContent = SITE.name;
+
+const normWa = v => { let n = String(v).replace(/\D/g, ''); if (n.startsWith('0')) n = '62' + n.slice(1); else if (n.startsWith('8')) n = '62' + n; return /^62\d{8,13}$/.test(n) ? n : ''; };
+$('#fReg').onsubmit = async e => {
+  e.preventDefault(); const f = e.target, d = Object.fromEntries(new FormData(f)), msg = $('#msg'), b = $('#bReg');
+  const wa = normWa(d.wa); if (!wa) { msg.textContent = 'Nomor WhatsApp tidak valid. Contoh: 08123456789.'; return; }
+  b.disabled = true; msg.textContent = 'Mendaftarkan...';
+  try {
+    const r = await api({ action: 'register', name: d.name, status: d.status, department: d.department, wa, publish_consent: true });
+    const up = new URL('upload.html', location.href).href;
+    const text = `*PENDAFTARAN PORTOFOLIO DIGITAL*\n${SITE.name}\n----------------------------\nNama       : ${r.name}\nStatus     : ${r.status}\nJurusan    : ${r.department || '-'}\nNo. WA     : ${r.wa}\nKode akses : *${r.code}*\n----------------------------\nUpload karya di:\n${up}\n\nSimpan pesan ini. Jangan bagikan kode akses.`;
+    f.classList.add('hidden'); msg.textContent = '';
+    const s = $('#done'); s.classList.remove('hidden');
+    s.innerHTML = `<p class="font-semibold">Pendaftaran berhasil, ${esc(r.name)}</p><p class="text-sm mt-1" style="color:var(--mut)">Kode akses Anda</p><p class="text-5xl font-extrabold tracking-widest my-3" style="color:var(--c)" id="code">${esc(r.code)}</p>
+    <div class="grid gap-3 mt-4"><a class="btn" style="background:#16a34a" target="_blank" rel="noopener" href="https://wa.me/${r.wa}?text=${encodeURIComponent(text)}">Simpan ke WhatsApp</a>
+    <button class="btn o" id="cp" type="button">Salin kode</button><a class="btn o" href="upload.html">Lanjut upload karya</a></div>
+    <p class="text-xs mt-4" style="color:var(--mut)">Tombol WhatsApp membuka chat ke nomor ${esc(r.wa)}. Tekan kirim, lalu sematkan chat itu agar mudah dicari.</p>`;
+    $('#cp').onclick = async ev => { try { await navigator.clipboard.writeText(r.code); ev.target.textContent = 'Kode disalin'; } catch { ev.target.textContent = 'Salin manual: ' + r.code; } };
+  } catch (err) { msg.textContent = 'Gagal: ' + err.message; b.disabled = false; }
+};
+</script></body></html>

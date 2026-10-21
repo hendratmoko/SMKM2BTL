@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin | Portofolio Digital SMK MUHAMMADIYAH 2 BANTUL</title>
+<link rel="icon" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{padding:.55rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;white-space:nowrap}th{background:var(--soft);position:sticky;top:0}td.w{white-space:normal;min-width:14rem;max-width:22rem;word-break:break-all}.tab{padding:.5rem 1.1rem;border-radius:999px;font-weight:700;border:1.5px solid var(--c);color:var(--c)}.tab[aria-selected=true]{background:var(--c);color:#fff}</style>
+</head>
+<body>
+<header style="background:var(--card);border-bottom:1px solid var(--line)"><div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
+<a href="index.html" class="flex items-center gap-2 font-extrabold"><img id="logo" class="w-7 h-7" alt=""><span class="text-sm">Admin Portofolio</span></a>
+<button id="out" class="btn o text-sm hidden">Keluar</button></div></header>
+<main class="max-w-6xl mx-auto px-4 py-8">
+<form id="fLogin" class="card p-6 max-w-sm mx-auto mt-10 grid gap-4">
+<h1 class="text-2xl font-extrabold">Masuk admin</h1>
+<label class="block text-sm font-semibold">Kata sandi admin<input class="in mt-1" type="password" id="key" required autocomplete="current-password"></label>
+<button class="btn">Masuk</button><p id="lMsg" class="text-sm" role="status"></p></form>
+
+<div id="panel" class="hidden">
+<div class="flex flex-wrap items-center gap-3 justify-between">
+<div class="flex gap-2" role="tablist"><button class="tab" role="tab" data-t="works" aria-selected="true">Karya</button><button class="tab" role="tab" data-t="profiles" aria-selected="false">Profil &amp; kode akses</button></div>
+<div class="flex gap-2"><input id="q" type="search" class="in" placeholder="Cari nama, judul, kode..." style="width:16rem" aria-label="Cari"><button id="reload" class="btn o text-sm">Muat ulang</button></div></div>
+<p id="sum" class="text-sm mt-3" style="color:var(--mut)"></p>
+<div class="card mt-3 tw" style="max-height:70vh"><table id="tbl"></table></div>
+<p class="text-xs mt-3" style="color:var(--mut)">Admin hanya dapat mengubah Tautan Karya dan Tautan Gambar Thumbnail. Data lain hanya bisa dilihat.</p>
+</div>
+</main>
+<dialog id="dlg"><div class="p-5"><div id="dbody"></div></div></dialog>
+<script src="config.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const okUrl = u => /^https:\/\/\S+$/i.test(u || '');
+$('#logo').src = SITE.logo;
+let KEY = '', D = { profiles: [], works: [] }, tab = 'works';
+try { KEY = sessionStorage.getItem('adm') || ''; } catch {}
+
+const lnk = u => u ? `<a class="underline" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>` : '-';
+const COLS = {
+  works: [['No', w => w.key], ['Judul', w => esc(w.title)], ['Pembuat', w => esc(w.name)], ['Kode', w => esc(w.code)], ['Status', w => esc(w.status)], ['Kategori', w => esc(w.category)], ['Kelas', w => esc(w.cls)], ['Tahun', w => esc(w.year)], ['Mapel', w => esc(w.mapel)], ['Guru', w => esc(w.guru)], ['Deskripsi', w => `<span class="w" style="white-space:normal;display:block;min-width:14rem">${esc(w.desc)}</span>`], ['Tautan karya', w => lnk(w.link), 'w'], ['Tautan thumbnail', w => lnk(w.image), 'w'], ['Bintang', w => w.stars], ['Sertifikat', w => w.certified ? 'Ya' : '-'], ['Tanggal', w => esc(w.date)], ['', w => `<button class="btn text-sm" data-e="${w.key}">Edit tautan</button>`]],
+  profiles: [['Kode akses', p => `<b>${esc(p.code)}</b>`], ['Nama', p => esc(p.name)], ['Status', p => esc(p.status)], ['Jurusan', p => esc(p.department)], ['WhatsApp', p => esc(p.wa)], ['Izin publikasi', p => p.consent ? 'Ya' : 'Tidak'], ['Jumlah karya', p => D.works.filter(w => w.id === p.id).length], ['Terdaftar', p => esc(p.created)], ['ID', p => esc(p.id)]]
+};
+function render() {
+  const q = $('#q').value.toLowerCase().trim(), cols = COLS[tab];
+  const rows = D[tab].filter(r => !q || JSON.stringify(Object.values(r)).toLowerCase().includes(q));
+  $('#sum').textContent = `${rows.length} dari ${D[tab].length} ${tab === 'works' ? 'karya' : 'profil'}`;
+  $('#tbl').innerHTML = `<thead><tr>${cols.map(c => `<th>${c[0]}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${cols.map(c => `<td class="${c[2] || ''}">${c[1](r)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${cols.length}">Belum ada data.</td></tr>`}</tbody>`;
+}
+async function load() {
+  $('#sum').textContent = 'Memuat...';
+  try { D = await api({ action: 'adminList', admin_key: KEY }); $('#fLogin').classList.add('hidden'); $('#panel').classList.remove('hidden'); $('#out').classList.remove('hidden'); try { sessionStorage.setItem('adm', KEY); } catch {} render(); }
+  catch (e) { KEY = ''; try { sessionStorage.removeItem('adm'); } catch {} $('#panel').classList.add('hidden'); $('#out').classList.add('hidden'); $('#fLogin').classList.remove('hidden'); $('#lMsg').textContent = 'Gagal: ' + e.message; }
+}
+$('#fLogin').onsubmit = e => { e.preventDefault(); KEY = $('#key').value; $('#key').value = ''; $('#lMsg').textContent = 'Memeriksa...'; load(); };
+$('#out').onclick = () => { KEY = ''; try { sessionStorage.removeItem('adm'); } catch {} location.reload(); };
+$('#reload').onclick = load; $('#q').oninput = render;
+document.querySelectorAll('.tab').forEach(b => b.onclick = () => { tab = b.dataset.t; document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === b)); render(); });
+$('#tbl').onclick = e => {
+  const b = e.target.closest('[data-e]'); if (!b) return; const w = D.works.find(x => x.key == b.dataset.e); if (!w) return;
+  $('#dbody').innerHTML = `<h2 class="text-xl font-extrabold">Edit tautan karya</h2><p class="text-sm mt-1" style="color:var(--mut)">${esc(w.title)} oleh ${esc(w.name)} (${esc(w.code)})</p>
+  <form id="fEdit" class="mt-4 grid gap-3"><label class="block text-sm font-semibold">Tautan karya (https)<input class="in mt-1 font-normal" name="link" type="url" required value="${esc(w.link)}"></label>
+  <label class="block text-sm font-semibold">Tautan gambar thumbnail (https, boleh kosong)<input class="in mt-1 font-normal" name="image" type="url" value="${esc(w.image)}"></label>
+  <div class="flex gap-2"><button class="btn">Simpan</button><button type="button" class="btn o" id="cx">Batal</button></div><p id="eMsg" class="text-sm" role="status"></p></form>`;
+  $('#dlg').showModal(); $('#cx').onclick = () => $('#dlg').close();
+  $('#fEdit').onsubmit = async ev => {
+    ev.preventDefault(); const d = Object.fromEntries(new FormData(ev.target)), m = $('#eMsg');
+    if (!okUrl(d.link) || (d.image && !okUrl(d.image))) { m.textContent = 'Tautan harus diawali https://'; return; }
+    m.textContent = 'Menyimpan...';
+    try { const r = await api({ action: 'adminUpdateLinks', admin_key: KEY, key: w.key, link: d.link, image: d.image }); w.link = r.link; w.image = r.image; $('#dlg').close(); render(); }
+    catch (err) { m.textContent = 'Gagal: ' + err.message; }
+  };
+};
+$('#dlg').addEventListener('click', e => { if (e.target.id === 'dlg') e.target.close(); });
+if (KEY) load();
+</script>
+</body>
+</html>

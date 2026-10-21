@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portofolio Digital SMK MUHAMMADIYAH 2 BANTUL</title>
+<meta name="description" content="Ruang apresiasi presentasi bagi guru dan peserta didik untuk mendokumentasikan, memamerkan, dan mengembangkan karya digital.">
+<meta property="og:title" content="Portofolio Digital Pendidik dan Peserta Didik">
+<meta property="og:description" content="Jelajahi karya, inspirasi, dan prestasi digital.">
+<meta property="og:type" content="website">
+<!-- FAVICON -->
+<link rel="icon" type="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png" sizes="32x32" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+<link rel="icon" type="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png" sizes="16x16" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/hendratmoko/SandenArtGallery/refs/heads/main/images/favicon.png">
+
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://unpkg.com/lucide@0.441.0/dist/umd/lucide.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="sticky top-0 z-30 backdrop-blur" style="background:color-mix(in srgb,var(--card) 90%,transparent);border-bottom:1px solid var(--line)">
+<nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4" aria-label="Utama">
+<a href="#beranda" class="flex items-center gap-2 font-extrabold text-lg"><span id="logo" class="text-2xl"></span><span id="siteName" class="hidden lg:inline text-sm max-w-[14rem] leading-tight"></span></a>
+<div id="menu" class="hidden md:flex gap-5 text-sm font-semibold items-center"></div>
+<div class="flex gap-2"><a href="daftar.html" class="btn text-sm"><i data-lucide="user-plus" class="w-4 h-4"></i>Daftar</a><a href="upload.html" class="btn o text-sm hidden sm:inline-flex"><i data-lucide="upload" class="w-4 h-4"></i>Upload karya</a>
+<button id="burger" class="md:hidden btn o" aria-label="Buka menu" aria-expanded="false"><i data-lucide="menu" class="w-5 h-5"></i></button></div>
+</nav>
+<div id="mmenu" class="hidden md:hidden px-4 pb-4 flex-col gap-3 text-sm font-semibold"></div>
+</header>
+<main>
+<section id="beranda" class="hero"><div class="max-w-6xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+<div><span class="pill"><i data-lucide="" class="w-4 h-4"></i>Portofolio Karya Digital Sekolah</span>
+<h1 class="text-4xl md:text-5xl font-extrabold leading-tight mt-5">Jelajahi karya, inspirasi, dan prestasi digital</h1>
+<p class="mt-5 text-lg max-w-prose" style="color:var(--mut)">Ruang apresiasi presentasi bagi guru dan peserta didik untuk mendokumentasikan, memamerkan, dan mengembangkan karya digital.</p>
+<div class="mt-7 flex flex-wrap gap-3"><a href="#galeri" class="btn">Jelajahi karya</a><a href="#guru" class="btn o">Lihat profil</a><a href="daftar.html" class="btn o">Daftar</a><a href="upload.html" class="btn o">Upload karya</a></div></div>
+<div class="relative hidden md:block" aria-hidden="true"><div class="card p-8 grid grid-cols-2 gap-4" style="border-radius:32px">
+<div class="ico w-full h-28" style="height:7rem"><i data-lucide="gamepad-2" class="w-10 h-10"></i></div><div class="ico w-full" style="height:7rem;width:100%"><i data-lucide="video" class="w-10 h-10"></i></div>
+<div class="ico" style="height:7rem;width:100%"><i data-lucide="globe" class="w-10 h-10"></i></div><div class="ico" style="height:7rem;width:100%"><i data-lucide="image" class="w-10 h-10"></i></div></div>
+<span class="pill absolute -top-3 -left-3" style="background:var(--card);box-shadow:0 6px 20px #0002"><i data-lucide="badge-check" class="w-4 h-4"></i>Izin publikasi terjaga</span>
+<span class="pill absolute -bottom-3 -right-3" style="background:var(--card);box-shadow:0 6px 20px #0002"><i data-lucide="trophy" class="w-4 h-4"></i>Penghargaan otomatis</span></div>
+</div></section>
+<section class="max-w-6xl mx-auto px-4 -mt-6 relative"><div id="stats" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"></div></section>
+
+<section class="sec text-center"><span class="pill">Dari berbagai jurusan dan kategori</span><h2 class="mt-3">Karya dari guru dan peserta didik</h2>
+<div class="overflow-hidden mt-6" style="mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)"><div id="marquee" class="mq"></div></div></section>
+
+<section id="galeri" class="sec"><span class="pill">Karya terbaru</span>
+<div class="flex items-end justify-between gap-3 flex-wrap mt-3"><h2>Galeri karya digital</h2><button id="reload" class="btn o text-sm"><i data-lucide="refresh-cw" class="w-4 h-4"></i>Muat ulang</button></div>
+<div class="card mt-6 p-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" id="filters">
+<input id="q" class="in lg:col-span-2" type="search" placeholder="Cari judul karya atau nama pembuat" aria-label="Cari">
+<select id="fCat" class="in" aria-label="Kategori"></select><select id="fSt" class="in" aria-label="Guru atau siswa"></select>
+<select id="fDep" class="in" aria-label="Jurusan"></select><select id="fCls" class="in" aria-label="Kelas"></select><select id="fYr" class="in" aria-label="Tahun"></select>
+<select id="sort" class="in" aria-label="Urutan"><option value="new">Terbaru</option><option value="pop">Terpopuler</option><option value="az">A sampai Z</option></select>
+<button id="reset" class="btn o lg:col-span-4 sm:col-span-2">Reset filter</button></div>
+<div id="grid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
+<div id="state" class="mt-6"></div><div class="text-center mt-8"><button id="more" class="btn o hidden">Muat lebih banyak</button></div></section>
+
+<section id="guru" class="sec"><span class="pill">Pendidik</span><h2 class="mt-3">Profil guru</h2><div id="listGuru" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></div><div class="text-center mt-6"><button id="moreGuru" class="btn o hidden">Muat lebih banyak</button></div></section>
+<section id="siswa" class="sec"><span class="pill">Peserta didik</span><h2 class="mt-3">Profil siswa</h2><div id="listSiswa" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></div><div class="text-center mt-6"><button id="moreSiswa" class="btn o hidden">Muat lebih banyak</button></div></section>
+
+<section id="penghargaan" class="sec"><div class="text-center max-w-2xl mx-auto"><span class="pill">Penghargaan</span><h2 class="mt-3">Tingkat prestasi</h2>
+<p class="mt-3" style="color:var(--mut)">Tingkat dihitung otomatis dari total bintang. Lencana "Tersertifikasi" hanya untuk karya yang divalidasi administrator.</p></div>
+<div id="tiers" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+<h3 class="text-xl font-extrabold mt-12">Kontributor berprestasi</h3><div id="awards" class="mt-4 grid gap-4 md:grid-cols-2"></div></section>
+
+<section class="sec"><div class="text-center max-w-2xl mx-auto"><span class="pill">Kenapa portofolio ini</span><h2 class="mt-3">Dibuat untuk memamerkan karya dengan aman</h2></div>
+<div class="mt-8 grid gap-5 md:grid-cols-3">
+<div class="card p-6"><span class="ico"><i data-lucide="shield-check" class="w-5 h-5"></i></span><h3 class="font-extrabold mt-4">Izin publikasi jelas</h3><p class="text-sm mt-2" style="color:var(--mut)">Hanya karya dengan persetujuan yang tampil. Kode akses dan kontak tidak pernah dikirim ke pengunjung.</p></div>
+<div class="card p-6"><span class="ico"><i data-lucide="users" class="w-5 h-5"></i></span><h3 class="font-extrabold mt-4">Satu profil, banyak karya</h3><p class="text-sm mt-2" style="color:var(--mut)">Setiap kontributor punya satu profil yang menghimpun seluruh karyanya.</p></div>
+<div class="card p-6"><span class="ico"><i data-lucide="play-circle" class="w-5 h-5"></i></span><h3 class="font-extrabold mt-4">Video, game, dan website</h3><p class="text-sm mt-2" style="color:var(--mut)">Putar video YouTube langsung, atau buka game dan website di tab baru.</p></div>
+<div class="card p-6"><span class="ico"><i data-lucide="trophy" class="w-5 h-5"></i></span><h3 class="font-extrabold mt-4">Penghargaan transparan</h3><p class="text-sm mt-2" style="color:var(--mut)">Tingkat otomatis dibedakan dari sertifikasi yang benar-benar divalidasi.</p></div>
+<div class="card p-6 md:col-span-2 flex items-center gap-5" style="background:var(--soft)"><span class="ico" style="background:var(--c);color:#fff"><i data-lucide="smartphone" class="w-5 h-5"></i></span><div><h3 class="font-extrabold">Nyaman dibuka di ponsel</h3><p class="text-sm mt-1" style="color:var(--mut)">Tampilan menyesuaikan layar smartphone, tablet, dan desktop.</p></div></div></div></section>
+
+<section id="cara" class="sec"><div class="text-center max-w-2xl mx-auto"><span class="pill">Proses mudah</span><h2 class="mt-3">Cara mendaftarkan karya</h2><p class="mt-3" style="color:var(--mut)">Empat langkah sederhana untuk menampilkan karya Anda.</p></div>
+<ol class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+<li class="card p-6"><b class="text-4xl" style="color:var(--c)">01</b><h3 class="font-extrabold mt-3">Daftar</h3><p class="text-sm mt-2" style="color:var(--mut)">Isi nama, status, jurusan, nomor WhatsApp, dan setujui izin publikasi.</p></li>
+<li class="card p-6"><b class="text-4xl" style="color:var(--c)">02</b><h3 class="font-extrabold mt-3">Simpan kode akses</h3><p class="text-sm mt-2" style="color:var(--mut)">Kode (contoh: WIN123) dibuat otomatis dan bisa disimpan ke WhatsApp Anda. Jangan dibagikan.</p></li>
+<li class="card p-6"><b class="text-4xl" style="color:var(--c)">03</b><h3 class="font-extrabold mt-3">Upload karya</h3><p class="text-sm mt-2" style="color:var(--mut)">Masukkan kode akses, judul, kategori, dan tautan https karya.</p></li>
+<li class="card p-6"><b class="text-4xl" style="color:var(--c)">04</b><h3 class="font-extrabold mt-3">Tampil di galeri</h3><p class="text-sm mt-2" style="color:var(--mut)">Karya muncul di galeri. Bintang dan sertifikasi diberikan administrator.</p></li></ol></section>
+
+<section id="tentang" class="sec pb-16"><div class="cta p-8 md:p-12 grid md:grid-cols-2 gap-6 items-center"><div><h2>Siap memamerkan karya Anda?</h2><p id="about" class="mt-3 opacity-90"></p></div>
+<div class="flex md:justify-end"><a href="daftar.html" class="btn" style="background:#fff;color:var(--c)">Daftar sekarang</a></div></div></section>
+</main>
+<footer style="background:var(--card);border-top:1px solid var(--line)"><div class="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-4 text-sm">
+<div class="md:col-span-2"><b class="text-lg" id="foot"></b><p class="mt-2 max-w-sm" style="color:var(--mut)">Platform portofolio digital untuk guru dan peserta didik by MOIDEA.</p></div>
+<div><b>Navigasi</b><ul class="mt-3 space-y-2" style="color:var(--mut)"><li><a href="#galeri">Karya</a></li><li><a href="#guru">Guru</a></li><li><a href="#siswa">Siswa</a></li><li><a href="#penghargaan">Penghargaan</a></li></ul></div>
+<div><b>Informasi</b><ul class="mt-3 space-y-2" style="color:var(--mut)"><li><a href="daftar.html">Daftar</a></li><li><a href="upload.html">Upload karya</a></li><li><a href="#cara">Cara daftar</a></li><li><a href="https://www.canva.com/design/DAHXMByBqNM/RvYVsgJEBJzgREN0QbXgAQ/view?utm_content=DAHXMByBqNM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc62e1285d2#1">Tentang</a></li><li><a href="admin.html">Admin</a></li></ul><p class="mt-4 pill"><i data-lucide="lock" class="w-4 h-4"></i>Data privat terlindungi</p></div></div></footer>
+<dialog id="dlg"><div class="p-5"><button class="btn o float-right" id="dx" aria-label="Tutup"><i data-lucide="x" class="w-4 h-4"></i></button><div id="dbody"></div></div></dialog>
+<script src="config.js"></script>
+<script>
+const APP_CONFIG = {
+  GAS_URL: SITE.GAS_URL,
+  siteName: 'SMK MUHAMMADIYAH 2 BANTUL',
+  school: 'SMK MUHAMMADIYAH 2 BANTUL', logo: 'https://raw.githubusercontent.com/hendratmoko/SMKM2BTL/refs/heads/main/LOGO.png',   // emoji atau URL gambar https
+  colorPrimary: '#1d6fe8', colorAccent: '#06b6d4',
+  adminContact: 'admin@sekolah.sch.id',
+  pageSize: 60, pageSizeProfiles: 8,
+  tiers: [{n:'Bronze',min:1,c:'#b4713b'},{n:'Silver',min:10,c:'#8a96a3'},{n:'Gold',min:25,c:'#d99a00'},{n:'Diamond',min:50,c:'#2aa7d6'}]
+};
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const okUrl = u => /^https:\/\/\S+$/i.test(u || '') ? u : '';
+const ytId = u => (String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/) || [])[1];
+const ICON = {Game:'gamepad-2',Video:'video',Website:'globe',Poster:'image','Media Pembelajaran':'book-open'};
+let W = [], shown = 0, list = [];
+
+document.documentElement.style.setProperty('--c', APP_CONFIG.colorPrimary);
+document.documentElement.style.setProperty('--a', APP_CONFIG.colorAccent);
+$('#siteName').textContent = APP_CONFIG.siteName;
+$('#logo').innerHTML = okUrl(APP_CONFIG.logo) ? `<img src="${esc(APP_CONFIG.logo)}" alt="" class="w-8 h-8">` : esc(APP_CONFIG.logo);
+$('#about').textContent = `Situs ini menampilkan karya digital guru dan peserta didik ${APP_CONFIG.school}. Hanya karya dengan izin publikasi yang ditampilkan. Pertanyaan atau permintaan penghapusan: ${APP_CONFIG.adminContact}.`;
+$('#foot').textContent = `© ${new Date().getFullYear()} ${APP_CONFIG.school}`;
+const links = [['beranda','Beranda'],['galeri','Karya'],['guru','Guru'],['siswa','Siswa'],['penghargaan','Penghargaan'],['cara','Cara daftar'],['tentang','Tentang']];
+$('#menu').innerHTML = $('#mmenu').innerHTML = links.map(l => `<a href="#${l[0]}">${l[1]}</a>`).join('');
+$('#burger').onclick = e => { const m = $('#mmenu'); const o = m.classList.toggle('hidden'); m.classList.toggle('flex', !o); e.currentTarget.setAttribute('aria-expanded', String(!o)); };
+$('#mmenu').onclick = () => { $('#mmenu').classList.add('hidden'); $('#mmenu').classList.remove('flex'); };
+
+function skeleton() {
+  $('#grid').innerHTML = Array(6).fill('<div class="card h-72 sk"></div>').join('');
+  $('#stats').innerHTML = Array(6).fill('<div class="card h-20 sk"></div>').join('');
+}
+function showState(icon, t, d, retry) {
+  $('#state').innerHTML = `<div class="card p-8 text-center"><i data-lucide="${icon}" class="w-8 h-8 mx-auto"></i><p class="font-semibold mt-2">${esc(t)}</p><p class="text-sm" style="color:var(--mut)">${esc(d)}</p>${retry ? '<button class="btn mt-4" id="retry">Coba lagi</button>' : ''}</div>`;
+  if (retry) $('#retry').onclick = load; lucide.createIcons();
+}
+async function load() {
+  $('#state').innerHTML = ''; skeleton(); $('#more').classList.add('hidden');
+  if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(APP_CONFIG.GAS_URL)) {
+    $('#grid').innerHTML = ''; $('#stats').innerHTML = '';
+    return showState('settings', 'URL API belum diisi', 'Isi APP_CONFIG.GAS_URL dengan URL Web App Google Apps Script (lihat README).');
+  }
+  try {
+    const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 20000);
+    const r = await fetch(APP_CONFIG.GAS_URL + '?action=works', { signal: ctl.signal }); clearTimeout(t);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json(); if (!j.ok) throw new Error(j.error || 'Respons API tidak valid');
+    W = j.data.works; init();
+  } catch (e) {
+    $('#grid').innerHTML = ''; $('#stats').innerHTML = '';
+    showState('wifi-off', 'Data gagal dimuat', e.name === 'AbortError' ? 'Koneksi terlalu lama merespons.' : e.message, true);
+  }
+}
+const uniq = a => [...new Set(a.filter(Boolean))].sort((x, y) => String(x).localeCompare(String(y), 'id'));
+function fill(id, label, vals) { $(id).innerHTML = `<option value="">${label}</option>` + vals.map(v => `<option>${esc(v)}</option>`).join(''); }
+function profiles() {
+  const m = {}; W.forEach(w => { const p = m[w.id] ??= {id:w.id,name:w.name,status:w.status,department:w.department,avatar:w.avatar,mapel:w.mapel,cls:w.cls,works:[],stars:0}; p.works.push(w); p.stars += w.stars; p.mapel ||= w.mapel; p.cls ||= w.cls; });
+  return Object.values(m);
+}
+function tier(s) { return [...APP_CONFIG.tiers].reverse().find(t => s >= t.min); }
+function init() {
+  const P = profiles();
+  const st = [['Kontributor',P.length,'users'],['Guru',P.filter(p=>p.status==='Guru').length,'briefcase'],['Siswa',P.filter(p=>p.status==='Siswa').length,'graduation-cap'],['Karya',W.length,'layers'],['Total bintang',W.reduce((a,w)=>a+w.stars,0),'star'],['Terverifikasi',W.filter(w=>w.certified).length,'badge-check']];
+  $('#stats').innerHTML = st.map(s => `<div class="card p-4 flex items-center gap-3"><span class="ico"><i data-lucide="${s[2]}" class="w-5 h-5"></i></span><span><b class="fd text-2xl block leading-none">${s[1]}</b><span class="text-xs" style="color:var(--mut)">${s[0]}</span></span></div>`).join('');
+  fill('#fCat','Semua kategori',uniq(W.map(w=>w.category))); fill('#fSt','Guru & siswa',uniq(W.map(w=>w.status)));
+  fill('#fDep','Semua jurusan',uniq(W.map(w=>w.department))); fill('#fCls','Semua kelas',uniq(W.map(w=>w.cls))); fill('#fYr','Semua tahun',uniq(W.map(w=>w.year)).reverse());
+  const pc = p => `<button class="card p-4 text-left hover:shadow-lg transition" data-p="${esc(p.id)}"><div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white" style="background:var(--c)">${okUrl(p.avatar) ? `<img src="${esc(p.avatar)}" alt="" class="w-11 h-11 rounded-full object-cover" loading="lazy">` : esc(p.name.slice(0,1).toUpperCase())}</span><span><b>${esc(p.name)}</b><br><span class="text-xs" style="color:var(--mut)">${esc(p.department || p.mapel || p.status)}</span></span></div><p class="text-sm mt-3">${p.works.length} karya, ${p.stars} bintang</p></button>`;
+  const lst = (s, id, bid) => {
+    const a = P.filter(p => p.status === s), n = APP_CONFIG.pageSizeProfiles, el = $(id), btn = $(bid); let c = 0;
+    if (!a.length) { el.innerHTML = `<p style="color:var(--mut)">Belum ada profil ${s.toLowerCase()} yang dipublikasikan.</p>`; btn.classList.add('hidden'); return; }
+    el.innerHTML = '';
+    const step = () => { el.insertAdjacentHTML('beforeend', a.slice(c, c + n).map(pc).join('')); c = Math.min(c + n, a.length); btn.classList.toggle('hidden', c >= a.length); lucide.createIcons(); };
+    btn.onclick = step; step();
+  };
+  lst('Guru', '#listGuru', '#moreGuru'); lst('Siswa', '#listSiswa', '#moreSiswa');
+  const top = [...P].sort((a,b)=>b.stars-a.stars).filter(p=>tier(p.stars));
+  $('#awards').innerHTML = (top.length ? top : []).slice(0,6).map(p => { const t = tier(p.stars); return `<div class="card p-4 flex items-center gap-4"><i data-lucide="${t.n==='Diamond'?'gem':'trophy'}" class="w-9 h-9" style="color:${t.c}"></i><div class="flex-1"><b>${esc(p.name)}</b><div class="text-sm" style="color:var(--mut)">Tingkat ${t.n} dengan ${p.stars} bintang${p.works.some(w=>w.certified)?', ada karya tersertifikasi':''}</div></div></div>`; }).join('') || '<p style="color:var(--mut)">Belum ada penghargaan.</p>';
+  const deps = uniq(W.map(w => w.department)).concat(uniq(W.map(w => w.category)));
+  $('#marquee').innerHTML = deps.length ? [...deps, ...deps].map(d => `<span class="chip">${esc(d)}</span>`).join('') : '';
+  apply();
+}
+function apply() {
+  const f = { c:$('#fCat').value, s:$('#fSt').value, d:$('#fDep').value, k:$('#fCls').value, y:$('#fYr').value, q:$('#q').value.toLowerCase().trim() };
+  list = W.filter(w => (!f.c||w.category===f.c)&&(!f.s||w.status===f.s)&&(!f.d||w.department===f.d)&&(!f.k||w.cls===f.k)&&(!f.y||w.year===f.y)&&(!f.q||(w.title+' '+w.name).toLowerCase().includes(f.q)));
+  const so = $('#sort').value;
+  list.sort(so==='pop' ? (a,b)=>b.stars-a.stars : so==='az' ? (a,b)=>a.title.localeCompare(b.title,'id') : (a,b)=>String(b.date).localeCompare(String(a.date)) || b.key-a.key);
+  shown = 0; $('#grid').innerHTML = ''; $('#state').innerHTML = '';
+  if (!W.length) showState('inbox','Belum ada karya','Karya yang dipublikasikan akan tampil di sini.');
+  else if (!list.length) showState('search-x','Karya tidak ditemukan','Ubah kata kunci atau reset filter.');
+  more();
+}
+function thumb(w) {
+  const y = ytId(w.link), src = okUrl(w.image) || (y ? `https://i.ytimg.com/vi/${y}/hqdefault.jpg` : '');
+  return src ? `<img src="${esc(src)}" alt="Gambar karya ${esc(w.title)}" loading="lazy" class="w-full h-44 object-cover">` : `<div class="h-44 flex items-center justify-center" style="background:color-mix(in srgb,var(--c) 15%,var(--card))"><i data-lucide="${ICON[w.category]||'sparkles'}" class="w-12 h-12" style="color:var(--c)"></i></div>`;
+}
+function more() {
+  list.slice(shown, shown + APP_CONFIG.pageSize).forEach(w => {
+    $('#grid').insertAdjacentHTML('beforeend', `<article class="card overflow-hidden flex flex-col transition hover:-translate-y-1 hover:shadow-xl"><div class="relative">${thumb(w)}<span class="badge">${esc(w.category)}</span>${w.certified ? '<span class="badge ok" style="left:auto;right:.75rem">Tersertifikasi</span>' : ''}</div><div class="p-5 flex-1 flex flex-col"><h3 class="font-extrabold text-lg leading-snug">${esc(w.title)}</h3><p class="text-xs mt-1" style="color:var(--mut)">${esc(w.name)}, ${esc(w.cls || w.department)} ${esc(w.year)}</p><p class="text-sm mt-3 line-clamp-2" style="color:var(--mut)">${esc(w.desc)}</p><div class="mt-auto pt-4"><div class="flex items-center justify-between mb-3 text-sm font-semibold"><span class="flex items-center gap-1"><i data-lucide="star" class="w-4 h-4" style="color:#f5a623"></i>${w.stars} bintang</span></div><button class="btn w-full" data-w="${w.key}">Lihat karya</button></div></div></article>`);
+  });
+  shown = Math.min(shown + APP_CONFIG.pageSize, list.length);
+  $('#more').classList.toggle('hidden', shown >= list.length); lucide.createIcons();
+}
+function openD(html) { $('#dbody').innerHTML = html; if (!$('#dlg').open) $('#dlg').showModal(); lucide.createIcons(); }
+function workView(k) {
+  const w = W.find(x => x.key === k); if (!w) return; const y = ytId(w.link);
+  const others = W.filter(x => x.id === w.id && x.key !== k);
+  openD(`<h2 class="text-2xl font-extrabold">${esc(w.title)}</h2><p class="text-sm" style="color:var(--mut)">${esc(w.name)}, ${esc(w.status)}</p>
+  <div class="mt-4 rounded-xl overflow-hidden">${y ? `<iframe class="w-full aspect-video" src="https://www.youtube-nocookie.com/embed/${y}" title="${esc(w.title)}" loading="lazy" allowfullscreen></iframe>` : thumb(w)}</div>
+  <p class="mt-4 whitespace-pre-line">${esc(w.desc) || 'Belum ada deskripsi.'}</p>
+  <dl class="mt-4 grid grid-cols-2 gap-2 text-sm"><dt>Kategori</dt><dd>${esc(w.category)}</dd><dt>Tahun</dt><dd>${esc(w.year) || '-'}</dd><dt>Kelas</dt><dd>${esc(w.cls) || '-'}</dd>${w.mapel ? `<dt>Mata pelajaran</dt><dd>${esc(w.mapel)}</dd>` : ''}${w.guru ? `<dt>Guru pembimbing</dt><dd>${esc(w.guru)}</dd>` : ''}<dt>Verifikasi</dt><dd>${w.certified ? 'Tersertifikasi' : 'Belum tersertifikasi'}</dd></dl>
+  ${w.link ? `<a class="btn mt-4" href="${esc(w.link)}" target="_blank" rel="noopener noreferrer">Buka karya asli</a>` : ''}
+  ${others.length ? `<h3 class="font-bold mt-6">Karya lain dari pembuat ini</h3><ul class="mt-2 space-y-1">${others.map(o => `<li><button class="underline" data-w="${o.key}">${esc(o.title)}</button></li>`).join('')}</ul>` : ''}`);
+}
+function profView(id) {
+  const p = profiles().find(x => x.id === id); if (!p) return; const t = tier(p.stars);
+  openD(`<h2 class="text-2xl font-extrabold">${esc(p.name)}</h2><p class="text-sm" style="color:var(--mut)">${esc(p.status)}${p.department ? ', ' + esc(p.department) : ''}${p.cls ? ', ' + esc(p.cls) : ''}${p.mapel ? ', ' + esc(p.mapel) : ''}</p>
+  <p class="mt-3">${p.works.length} karya, ${p.stars} bintang${t ? `, tingkat ${t.n}` : ''}</p>
+  <ul class="mt-4 space-y-2">${p.works.map(w => `<li class="card p-3 flex justify-between gap-3"><span>${esc(w.title)}<br><span class="text-xs" style="color:var(--mut)">${esc(w.category)}, ${esc(w.year)}</span></span><button class="btn text-sm" data-w="${w.key}">Lihat</button></li>`).join('')}</ul>`);
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-w],[data-p]'); if (!t) return;
+  if (t.dataset.w) workView(+t.dataset.w); else if (t.dataset.p) profView(t.dataset.p);
+});
+$('#dx').onclick = () => $('#dlg').close();
+$('#dlg').addEventListener('click', e => { if (e.target.id === 'dlg') e.target.close(); });
+['#fCat','#fSt','#fDep','#fCls','#fYr','#sort'].forEach(s => $(s).onchange = apply);
+let tm; $('#q').oninput = () => { clearTimeout(tm); tm = setTimeout(apply, 250); };
+$('#reset').onclick = () => { $$('#filters select').forEach(s => s.selectedIndex = 0); $('#sort').value = 'new'; $('#q').value = ''; apply(); };
+$('#more').onclick = more; $('#reload').onclick = load;
+$('#tiers').innerHTML = APP_CONFIG.tiers.map((t, i) => `<div class="card p-6 ${i===2?'ring-2':''}" style="${i===2?'--tw-ring-color:var(--c)':''}"><i data-lucide="${t.n==='Diamond'?'gem':i>1?'trophy':'medal'}" class="w-10 h-10" style="color:${t.c}"></i><h3 class="fd text-xl font-extrabold mt-3">${t.n}</h3><p class="text-sm" style="color:var(--mut)">Mulai dari</p><p class="fd text-3xl font-extrabold">${t.min} bintang</p><ul class="mt-4 space-y-2 text-sm"><li class="ck">Lencana tingkat ${t.n}</li><li class="ck">Tampil di daftar penghargaan</li><li class="ck">Dihitung otomatis dari total bintang</li></ul></div>`).join('');
+lucide.createIcons(); load();
+</script>
+</body>
+</html>
