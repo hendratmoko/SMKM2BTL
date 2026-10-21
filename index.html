@@ -109,7 +109,7 @@ document.documentElement.style.setProperty('--c', APP_CONFIG.colorPrimary);
 document.documentElement.style.setProperty('--a', APP_CONFIG.colorAccent);
 $('#siteName').textContent = APP_CONFIG.siteName;
 $('#logo').innerHTML = okUrl(APP_CONFIG.logo) ? `<img src="${esc(APP_CONFIG.logo)}" alt="" class="w-8 h-8">` : esc(APP_CONFIG.logo);
-$('#about').textContent = `Situs ini menampilkan karya digital guru dan peserta didik ${APP_CONFIG.school}. Hanya karya dengan izin publikasi yang ditampilkan. Pertanyaan atau permintaan penghapusan: ${APP_CONFIG.adminContact}.`;
+$('#about').textContent = `Situs ini menampilkan karya digital guru dan peserta didik ${APP_CONFIG.school}. Karya Anda akan menjadi bukti portofolio yang akan membanggakan. Pertanyaan atau permintaan perubahan: ${APP_CONFIG.adminContact}.`;
 $('#foot').textContent = `© ${new Date().getFullYear()} ${APP_CONFIG.school}`;
 const links = [['beranda','Beranda'],['galeri','Karya'],['guru','Guru'],['siswa','Siswa'],['penghargaan','Penghargaan'],['cara','Cara daftar'],['tentang','Tentang']];
 $('#menu').innerHTML = $('#mmenu').innerHTML = links.map(l => `<a href="#${l[0]}">${l[1]}</a>`).join('');
