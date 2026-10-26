@@ -15,14 +15,14 @@
 <nav class="flex gap-4 text-sm font-semibold"><a href="index.html">Beranda</a><a href="daftar.html">Daftar</a><a href="upload.html">Upload karya</a></nav></div></header>
 <main class="max-w-xl mx-auto px-4 py-8">
 <span class="pill">Langkah 2</span><h1 class="text-3xl font-extrabold mt-3">Upload karya</h1>
-<p class="mt-2" style="color:var(--mut)">Masukkan kode akses dari pendaftaran (3 huruf dan 3 angka). Belum punya? <a href="daftar.html" class="underline font-semibold">Daftar dulu</a>.</p>
+<p class="mt-2" style="color:var(--mut)">Masukkan kode akses dari pendaftaran. Belum punya? <a href="daftar.html" class="underline font-semibold">Daftar dulu</a>.</p>
 <form id="fWork" class="card p-5 mt-6 grid gap-4">
-<label class="block text-sm font-semibold">Kode akses<input class="in mt-1 text-xl font-extrabold tracking-widest uppercase" name="access_code" required maxlength="6" pattern="[A-Za-z]{3}[0-9]{3}" placeholder="WIN123" autocapitalize="characters" autocomplete="off"></label>
+<label class="block text-sm font-semibold">Kode akses<input class="in mt-1 text-xl font-extrabold tracking-widest uppercase" name="access_code" required maxlength="6" pattern="[A-Za-z]{3}[0-9]{3}" placeholder="INSERT ACCES CODE" autocapitalize="characters" autocomplete="off"></label>
 <label class="block text-sm font-semibold">Judul karya<input class="in mt-1 font-normal" name="title" type="text" required maxlength=120></label>
 <label class="block text-sm font-semibold">Deskripsi<textarea name="desc" class="in mt-1 font-normal" rows="3" maxlength="1000"></textarea></label>
 <label class="block text-sm font-semibold">Kategori<select name="category" class="in mt-1 font-normal"><option>Game</option><option>Video</option><option>Website</option><option>Poster</option><option>Media Pembelajaran</option></select></label>
 <div class="grid grid-cols-2 gap-3"><label class="block text-sm font-semibold">Kelas<input class="in mt-1 font-normal" name="cls" type="text" ></label><label class="block text-sm font-semibold">Tahun<input class="in mt-1 font-normal" name="year" type="number" min=2000 max=2100></label></div>
-<label class="block text-sm font-semibold">Tautan karya (https)<input class="in mt-1 font-normal" name="link" type="url" required placeholder=https://></label>
+<label class="block text-sm font-semibold">Tautan karya<input class="in mt-1 font-normal" name="link" type="url" required placeholder=https://></label>
 <label class="block text-sm font-semibold">Tautan gambar thumbnail (https, opsional)<input class="in mt-1 font-normal" name="image" type="url" placeholder=https://></label>
 <label class="block text-sm font-semibold">Guru pembimbing<input class="in mt-1 font-normal" name="guru" type="text" ></label><label class="block text-sm font-semibold">Mata pelajaran<input class="in mt-1 font-normal" name="mapel" type="text" ></label>
 <button class="btn" id="bW">Kirim karya</button><p id="msg" class="text-sm" role="status"></p></form>
