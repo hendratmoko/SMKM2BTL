@@ -20,7 +20,39 @@
 <label class="block text-sm font-semibold">Kode akses<input class="in mt-1 text-xl font-extrabold tracking-widest uppercase" name="access_code" required maxlength="6" pattern="[A-Za-z]{3}[0-9]{3}" placeholder="INSERT ACCES CODE" autocapitalize="characters" autocomplete="off"></label>
 <label class="block text-sm font-semibold">Judul karya<input class="in mt-1 font-normal" name="title" type="text" required maxlength=120></label>
 <label class="block text-sm font-semibold">Deskripsi<textarea name="desc" class="in mt-1 font-normal" rows="3" maxlength="1000"></textarea></label>
-<label class="block text-sm font-semibold">Kategori<select name="category" class="in mt-1 font-normal"><option>Game</option><option>Video</option><option>Website</option><option>Poster</option><option>Media Pembelajaran</option></select></label>
+<label class="block text-sm font-semibold">Kategori<select name="category" class="in mt-1 font-normal">
+            <option>Media Pembelajaran</option>
+            <option>Video</option>
+			      <option>Animasi</option>
+            <option>PDF</option>
+            <option>PPTX</option>
+            <option>Word</option>
+            <option>Excel</option>
+            <option>Spreadsheet</option>
+            <option>Text</option>
+            <option>Image</option>
+            <option>Poster</option>
+            <option>MP3</option>
+            <option>App</option>
+            <option>Website</option>
+            <option>Game</option>
+            <option>Android</option>
+            <option>Canva</option>
+            <option>IoT</option>
+            <option>AI</option>
+		      	<option>Kalkulator</option>
+            <option>Scratch</option>
+            <option>Unity</option>
+            <option>Phyton</option>
+            <option>Html</option>
+            <option>CSS</option>
+            <option>Javascript</option>
+            <option>Laravel</option>
+            <option>Github</option>
+            <option>Quis</option>
+            <option>Folder</option>
+            <option>Other</option>
+</select></label>
 <div class="grid grid-cols-2 gap-3"><label class="block text-sm font-semibold">Kelas<input class="in mt-1 font-normal" name="cls" type="text" ></label><label class="block text-sm font-semibold">Tahun<input class="in mt-1 font-normal" name="year" type="number" min=2000 max=2100></label></div>
 <label class="block text-sm font-semibold">Tautan karya<input class="in mt-1 font-normal" name="link" type="url" required placeholder=https://></label>
 <label class="block text-sm font-semibold">Tautan gambar thumbnail (https, opsional)<input class="in mt-1 font-normal" name="image" type="url" placeholder=https://></label>
