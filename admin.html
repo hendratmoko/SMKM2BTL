@@ -66,7 +66,7 @@ $('#tbl').onclick = e => {
   <form id="fEdit" class="mt-4 grid gap-3"><label class="block text-sm font-semibold">Tautan karya (https)<input class="in mt-1 font-normal" name="link" type="url" required value="${esc(w.link)}"></label>
   <label class="block text-sm font-semibold">Tautan gambar thumbnail (https, boleh kosong)<input class="in mt-1 font-normal" name="image" type="url" value="${esc(w.image)}"></label>
   
-   <label class="block text-sm font-semibold">Tautan Deskripsi<input class="in mt-1 font-normal" name="Deskripsi" type="url" value="${esc(w.desc)}"></label>
+   <label class="block text-sm font-semibold">Tautan Deskripsi<input class="in mt-1 font-normal" name="Deskripsi" value="${esc(w.desc)}"></label>
    
   <div class="flex gap-2"><button class="btn">Simpan</button><button type="button" class="btn o" id="cx">Batal</button></div><p id="eMsg" class="text-sm" role="status"></p></form>`;
   $('#dlg').showModal(); $('#cx').onclick = () => $('#dlg').close();
