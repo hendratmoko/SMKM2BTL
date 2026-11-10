@@ -42,7 +42,7 @@ try { KEY = sessionStorage.getItem('adm') || ''; } catch {}
 
 const lnk = u => u ? `<a class="underline" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>` : '-';
 const COLS = {
-  works: [['No', w => w.key], ['Judul', w => esc(w.title)], ['Pembuat', w => esc(w.name)], ['Kode', w => esc(w.code)], ['Status', w => esc(w.status)], ['Kategori', w => esc(w.category)], ['Kelas', w => esc(w.cls)], ['Tahun', w => esc(w.year)], ['Mapel', w => esc(w.mapel)], ['Guru', w => esc(w.guru)], ['Deskripsi', w => `<span class="w" style="white-space:normal;display:block;min-width:14rem">${esc(w.desc)}</span>`], ['Tautan karya', w => lnk(w.link), 'w'], ['Tautan thumbnail', w => lnk(w.image), 'w'], ['Bintang', w => w.stars], ['Sertifikat', w => w.certified ? 'Ya' : '-'], ['Tanggal', w => esc(w.date)], ['', w => `<button class="btn text-sm" data-e="${w.key}">Edit tautan</button>`], ['', w => `<button class="btn text-sm" data-e="${w.key}">Edit tautan</button>`]],
+  works: [['No', w => w.key], ['Judul', w => esc(w.title)], ['Pembuat', w => esc(w.name)], ['Kode', w => esc(w.code)], ['Status', w => esc(w.status)], ['Kategori', w => esc(w.category)], ['Kelas', w => esc(w.cls)], ['Tahun', w => esc(w.year)], ['Mapel', w => esc(w.mapel)], ['Guru', w => esc(w.guru)], ['Deskripsi', w => `<span class="w" style="white-space:normal;display:block;min-width:14rem">${esc(w.desc)}</span>`], ['Tautan karya', w => lnk(w.link), 'w'], ['Tautan thumbnail', w => lnk(w.image), 'w'], ['Bintang', w => w.stars], ['Sertifikat', w => w.certified ? 'Ya' : '-'], ['Tanggal', w => esc(w.date)], ['', w => `<button class="btn text-sm" data-e="${w.key}">Edit tautan</button>`]],
   profiles: [['Kode akses', p => `<b>${esc(p.code)}</b>`], ['Nama', p => esc(p.name)], ['Status', p => esc(p.status)], ['Jurusan', p => esc(p.department)], ['WhatsApp', p => esc(p.wa)], ['Izin publikasi', p => p.consent ? 'Ya' : 'Tidak'], ['Jumlah karya', p => D.works.filter(w => w.id === p.id).length], ['Terdaftar', p => esc(p.created)], ['ID', p => esc(p.id)]]
 };
 function render() {
@@ -65,6 +65,9 @@ $('#tbl').onclick = e => {
   $('#dbody').innerHTML = `<h2 class="text-xl font-extrabold">Edit tautan karya</h2><p class="text-sm mt-1" style="color:var(--mut)">${esc(w.title)} oleh ${esc(w.name)} (${esc(w.code)})</p>
   <form id="fEdit" class="mt-4 grid gap-3"><label class="block text-sm font-semibold">Tautan karya (https)<input class="in mt-1 font-normal" name="link" type="url" required value="${esc(w.link)}"></label>
   <label class="block text-sm font-semibold">Tautan gambar thumbnail (https, boleh kosong)<input class="in mt-1 font-normal" name="image" type="url" value="${esc(w.image)}"></label>
+  
+   <label class="block text-sm font-semibold">Tautan Deskripsi<input class="in mt-1 font-normal" name="image" type="url" value="${esc(w.image)}"></label>
+   
   <div class="flex gap-2"><button class="btn">Simpan</button><button type="button" class="btn o" id="cx">Batal</button></div><p id="eMsg" class="text-sm" role="status"></p></form>`;
   $('#dlg').showModal(); $('#cx').onclick = () => $('#dlg').close();
   $('#fEdit').onsubmit = async ev => {
